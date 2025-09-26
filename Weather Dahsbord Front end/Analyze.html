@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Page - ODV LAB</title>
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="./analyzestyle.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+  
+</head>
+<body>
+
+  <section class="home-section">
+
+    <div class="popup-overlay" id="popup-overlay">
+  <div class="popup-content">
+    <h3 class="popup-title" id="popup-title">Alert</h3>
+    <p class="popup-message" id="popup-message">This is a message</p>
+    <button class="popup-button" id="popup-button">OK</button>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-content">
+    <div class="loading-spinner"></div>
+    <div class="loading-message">Loading data...</div>
+  </div>
+</div>
+
+    <div class="sidebar close" id="sidebar">
+  <div class="logo">
+    <h2>ODV-LAB</h2>
+    <i class="bx bx-x closeBtn"></i>
+  </div>
+  <ul class="nav-links">
+    <li  data-page="dashboard">
+      <i class="bx bx-grid-alt"></i>
+      <span class="link-name">Dashboard</span>
+    </li>
+    <li class="active" data-page="analyze">
+      <i class="bx bx-file"></i>
+      <span class="link-name">Analyze</span>
+    </li>
+  </ul>
+</div>
+    <nav>
+      <div class="sidebar-button">
+        <i class="bx bx-menu sidebarBtn"></i>
+        <span class="dashboard-title">ODV - LAB Project DS18B20</span>
+      </div>
+    </nav>
+
+          <div class="home-content">
+        <div>
+          <div class="dashboard">
+      <div class="card4">
+        <h3>Select Time Range</h3>
+        <div class="time-inputs">
+          <!-- <div class="time-input-group">
+            <label for="start-time">From</label>
+            <input type="time" id="start-time" name="start-time" step="1">
+          </div> 
+
+          <div class="time-input-group">
+            <label for="end-time">To</label>
+            <input type="time" id="end-time" name="end-time" step="1">
+          </div> -->
+<div class="date-inputs">
+
+  
+
+</div>
+ <div class="custom-time-picker">
+    <label for="start-time">From</label>
+  <div class="time-selectors compact-time-selectors">
+     <div class="date-input-group compact-date-input">
+  <input type="date" id="start-date" name="start-date" aria-label="Start date">
+</div>
+    <select id="start-hour" name="start-hour" aria-label="Start hour"></select>
+    <span>:</span>
+    <select id="start-minute" name="start-minute" aria-label="Start minute"></select>
+    <span>:</span>
+    <select id="start-second" name="start-second" aria-label="Start second"></select>
+  </div>
+  
+</div>
+<input type="hidden" id="start-time" name="start-time" />
+
+
+<div class="custom-time-picker">
+  <label for="end-time">To</label>
+  <div class="time-selectors compact-time-selectors">
+      <div class="date-input-group compact-date-input">
+    <input type="date" id="end-date" name="end-date" aria-label="End date">
+  </div>
+    <select id="end-hour" name="end-hour" aria-label="End hour"></select>
+    <span>:</span>
+    <select id="end-minute" name="end-minute" aria-label="End minute"></select>
+    <span>:</span>
+    <select id="end-second" name="end-second" aria-label="End second"></select>
+  </div>
+</div>
+<input type="hidden" id="end-time" name="end-time" />
+
+        </div>
+
+        <h3>Select Parameters</h3>
+        <div class="parameter-selection">
+          <button class="parameter-btn" data-param="INIT">INIT</button>
+          <button class="parameter-btn" data-param="REINIT">REINIT</button>
+          <button class="parameter-btn" data-param="ENDTREATMENT">ENDTREATMENT</button>
+          <button class="parameter-btn" data-param="TREATMENT">TREATMENT</button>
+          <button class="parameter-btn" data-param="HEATING">HEATING</button>
+        </div>
+<div class="submit-btn-wrapper">
+  <button class="submit-btn" id="submit-btn">Get Data</button>
+</div>
+      </div>
+
+            <div class="card">
+  <div class="card-title2">Data Filter</div>
+<div class="data-filter-container">
+            <div class="lottie-container" id="loading-animation">
+          <dotlottie-wc
+            src="https://lottie.host/014e40d0-aeba-4241-8f35-1d3b7cd3a6e9/6JfMsDElEc.lottie"
+          
+            speed="1"
+            autoplay
+            loop
+          ></dotlottie-wc>
+        </div>
+  <div class="filter-buttons-grid">
+    <button class="data-filter-btn" data-param="local temperature">
+      <span class="filter-label">Local Temperature</span>
+    </button>
+    <button class="data-filter-btn" data-param="temperature">
+      <span class="filter-label">Temperature</span>
+    </button>
+    <button class="data-filter-btn" data-param="pressure">
+      <span class="filter-label">Pressure</span>
+    </button>
+    <button class="data-filter-btn" data-param="humidity">
+      <span class="filter-label">Humidity</span>
+    </button>
+  </div>
+</div>
+  </div>
+
+</div>
+
+          </div>
+        </div>
+      </div>
+
+
+    <div class="content-container">
+
+                <div class="data-display">
+                          <h2>Data Visualization</h2>
+
+<div class="label-with-dot">
+  <div class="label-item">
+    <span class="dot dot-localtemp"></span>
+    <span>Local Temperature</span>
+  </div>
+  <div class="label-item">
+    <span class="dot dot-temp"></span>
+    <span>Temperature</span>
+  </div>
+    <div class="label-item">
+    <span class="dot dot-pressure"></span>
+    <span>Pressure</span>
+  </div>
+      <div class="label-item">
+    <span class="dot dot-humidity"></span>
+    <span>Humidity</span>
+  </div>
+</div>
+
+<div class="chart-container" id="chart-container">
+  <canvas id="chart-canvas"></canvas>
+</div>
+      </div>
+    </div>
+      <div class="bottom">
+                <span class="bottom-title">ODV - LAB</span>
+
+      </div>
+  </section>
+  <script src = "analyze.js">
+  </script>
+</body>
+</html>

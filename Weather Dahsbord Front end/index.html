@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arduino BME280 Weather Station</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <section class="home-section">
+
+<div class="sidebar close" id="sidebar">
+  <div class="logo">
+    <h2>ODV-LAB</h2>
+    <i class="bx bx-x closeBtn"></i>
+  </div>
+  <ul class="nav-links">
+    <li class="active" data-page="dashboard">
+      <i class="bx bx-grid-alt"></i>
+      <span class="link-name">Dashboard</span>
+    </li>
+    <li data-page="analyze">
+      <i class="bx bx-file"></i>
+      <span class="link-name">Analyze</span>
+    </li>
+  </ul>
+</div>
+
+
+            <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard-title">ODV - LAB Project DS18B20</span>
+        </div>
+      </nav>
+      <div class="home-content">
+        <div class="main-container">
+          <div class="dashboard">
+            <div class="card3">
+              <div class="card-title">State</div>
+              <div class="air-quality-value" id="state"></div>
+
+              <div class="air-quality-circle">
+                <div class="circle-outer" id="state-bulb">
+                  <div class="circle-middle">
+                    <div class="circle-inner">
+                       <i class="fa-solid fa-power-off power-icon"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card3">
+               <div class="card-title2">Summary</div>
+              <div class="metric-grid">
+                <div>
+                  <div class="metric-label">Local Temperature</div>
+                  <div class="metric aqi-41 ">
+                    <div class="number" id="temperature_locale">0</div>
+                    <div class="metric-underline lt"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="metric-label">Temperature</div>
+                  <div class="metric aqi-41 ">
+                    <div class="number" id="temperature">0</div>
+                    <div class="metric-underline t"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="metric-label">Pressure</div>
+                  <div class="metric aqi-41">
+                    <div class="number" id="pressure">0</div>
+                    <div class="metric-underline p"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="metric-label">Humidity</div>
+                  <div class="metric aqi-41">
+                    <div class="number" id="humidity">0</div>
+                    <div class="metric-underline h"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card3">
+              <div class="card-title">Local Temperature</div>
+              <div class="gauge-container">
+                <canvas id="temperature_locale-gauge"></canvas>
+                <div class="gauge-value" id="temperature_locale-gaugeValue">
+                  -- °C
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">Local Temperature</div>
+              <div
+                class="metric-large"
+                id="temperature_locale-history-view"
+              ></div>
+
+              <div class="chart-container">
+                <canvas id="temperature_locale-history"></canvas>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">Temperature</div>
+              <div class="metric-large" id="temperature-history-view"></div>
+              <div class="chart-container">
+                <canvas id="temperature-history"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Pressure</div>
+              <div class="metric-large" id="presure-history-view"></div>
+              <div class="chart-container">
+                <canvas id="presure-history"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Humidity</div>
+              <div class="metric-large" id="humidity-history-view"></div>
+              <div class="chart-container">
+                <canvas id="humidity-history"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+                <span class="bottom-title">ODV - LAB</span>
+
+      </div>
+
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
