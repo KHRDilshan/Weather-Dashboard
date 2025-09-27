@@ -98,33 +98,26 @@ const pm25Chart = createChart(document.getElementById('pm25Chart'), 'PM 2.5', 5,
 const pm10Chart = createChart(document.getElementById('pm10Chart'), 'PM 10', 12, '#d35400', 'rgba(211, 84, 0, 0.1)');
 
     // Update sensor data with random values (simulating real-time updates)
-function updateSensorData() {
-  const newHumidity = (40 + Math.random()*20).toFixed(1);
-  const newTemperature = (20 + Math.random()*5).toFixed(1);
-  const newCO2 = (400 + Math.random()*200).toFixed(0);
-  const newPressure = (1010 + Math.random()*10).toFixed(1);
-  const newPM25 = (3 + Math.random()*10).toFixed(1);
-  const newPM10 = (8 + Math.random()*15).toFixed(1);
-
-  document.getElementById('humidityValue').innerHTML = `${newHumidity}<span class="sensor-unit">%</span>`;
-  document.getElementById('temperatureValue').innerHTML = `${newTemperature}<span class="sensor-unit">°C</span>`;
-  document.getElementById('co2Value').innerHTML = `${newCO2}<span class="sensor-unit">ppm</span>`;
-  document.getElementById('pressureValue').innerHTML = `${newPressure}<span class="sensor-unit">hPa</span>`;
-  document.getElementById('pm25Value').innerHTML = `${newPM25}<span class="sensor-unit">µg/m³</span>`;
-  document.getElementById('pm10Value').innerHTML = `${newPM10}<span class="sensor-unit">µg/m³</span>`;
+function updateSensorData(temperature, humidity, pressure, altitude, co2, pm25, pm10) {
+  document.getElementById('humidityValue').innerHTML = `${humidity}<span class="sensor-unit">%</span>`;
+  document.getElementById('temperatureValue').innerHTML = `${temperature}<span class="sensor-unit">°C</span>`;
+  document.getElementById('co2Value').innerHTML = `${co2}<span class="sensor-unit">ppm</span>`;
+  document.getElementById('pressureValue').innerHTML = `${pressure}<span class="sensor-unit">hPa</span>`;
+  document.getElementById('pm25Value').innerHTML = `${pm25}<span class="sensor-unit">µg/m³</span>`;
+  document.getElementById('pm10Value').innerHTML = `${pm10}<span class="sensor-unit">µg/m³</span>`;
 
   // Update charts
-  updateChart(temperatureChart, newTemperature);
-  updateChart(humidityChart, newHumidity);
-  updateChart(co2Chart, newCO2);
-  updateChart(pressureChart, newPressure);
-  updateChart(pm25Chart, newPM25);
-  updateChart(pm10Chart, newPM10);
+  updateChart(temperatureChart, temperature);
+  updateChart(humidityChart, humidity);
+  updateChart(co2Chart, co2);
+  updateChart(pressureChart, pressure);
+  updateChart(pm25Chart, pm25);
+  updateChart(pm10Chart, pm10);
 }
 
 // Start updating every second
-setInterval(updateSensorData, 1000);
-updateSensorData(); // Initial update
+// setInterval(updateSensorData, 1000);
+// updateSensorData(); // Initial update
 
    
 function updateChart(chart, newValue) {
@@ -165,10 +158,36 @@ function updateChart(chart, newValue) {
     // });
     
     // Update data every 5 seconds
-    setInterval(updateSensorData, 1000);
+    // setInterval(updateSensorData, 1000);
     
     // Initial data update
-    updateSensorData();
+    
+
+
+    function updateSensorDataReadings() {
+    fetch(`http://localhost:3002/sensorDataReadingsVideoStream`)
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+                let temperature = jsonResponse.temperature;
+      let humidity = jsonResponse.humidity;
+      let pressure = jsonResponse.pressure;
+            let altitude = jsonResponse.altitude;
+            let co2 = jsonResponse.co2;
+            let pm25 = jsonResponse.pm25;
+            let pm10 = jsonResponse.pm10;
+            let location = jsonResponse.location;
+            console.log({ temperature, humidity, pressure, altitude, co2, pm25, pm10 });
+            updateSensorData(temperature, humidity, pressure, altitude, co2, pm25, pm10);
+document.getElementById('location').innerHTML = location;
+        });
+}
+
+    (function loop() {
+        setTimeout(() => {
+            updateSensorDataReadings();
+            loop();
+        }, 1000);
+    })();
 
 
 

@@ -80,14 +80,14 @@ function saveRandomDataToDatabase() {
   const sensorData = generateRandomSensorData();
 
   // Delete all previous data
-  // const deleteSql = `DELETE FROM readings`;
+  const deleteSql = `DELETE FROM readings`;
 
-  // db.query(deleteSql, (err) => {
-  //   if (err) {
-  //     console.error('Error deleting old data:', err);
-  //     return;
-  //   }
-  // })
+  db.query(deleteSql, (err) => {
+    if (err) {
+      console.error('Error deleting old data:', err);
+      return;
+    }
+  })
 
     // Now insert the new data
     const insertSql = `
@@ -176,6 +176,7 @@ app.get('/sensorReadingsByTime', (req, res) => {
     console.log(response)
   });
 });
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);

@@ -220,13 +220,14 @@
     .sensors-section {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 0px;
               background: var(--card-bg);
       border-radius: 15px;
-      padding: 20px;
+      padding: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
+    @
     
     @media (max-width: 768px) {
       .sensors-section {
@@ -234,25 +235,84 @@
       }
     }
     
-    
+
     
 .sensor-card {
-  padding: 1rem;               /* p-4 */
+  position: relative;
+  padding: 10px 10px 10px 20px; /* add space for the line */
   text-align: center;
-
+  background: transparent;
+  border-radius: 6px;
+  margin: 10px 0;
 }
+
+/* Create the vertical line */
+.sensor-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 3px;
+  background-color: currentColor; /* will take the card’s color */
+}
+
+/* Assign unique colors per sensor */
+.sensor-card.humidity { color: #4cc9f0; }
+.sensor-card.temperature { color: #e94560; }
+.sensor-card.co2 { color: #2ecc71; }
+.sensor-card.pressure { color: #9b59b6; }
+.sensor-card.pm25 { color: #f39c12; }
+.sensor-card.pm10 { color: #d35400; }
+
+/* Icon inherits color */
+.sensor-card .sensor-icon {
+  font-family: 'Material Icons';
+  font-size: 50px;
+  display: block;
+  margin-bottom: 8px;
+  color: currentColor;
+}
+
+/* Value can stay white or also match color */
+.sensor-card .sensor-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff; /* change to currentColor if you want it same as line */
+}
+
    .sensor-title {
       font-size: 24pxpx;
-      font-weight: 600;
-      color:white
+      font-weight: 550;
+      color:white;
+        margin-top:5px
+
     }
-.sensor-icon {
-      font-family: 'Material Icons';
-  font-size: 2.25rem;          /* text-4xl */
-  color: #22c55e;              /* text-green-400 */
-  display: block;
+
+/* Match graph colors */
+.sensor-card.humidity .sensor-icon {
+  color: #4cc9f0;
+}
+.sensor-card.temperature .sensor-icon {
+  color: #e94560;
 }
 
+.sensor-card.co2 .sensor-icon {
+  color: #2ecc71;
+}
+
+.sensor-card.pressure .sensor-icon {
+  color: #9b59b6;
+}
+
+.sensor-card.pm25 .sensor-icon {
+  color: #f39c12;
+}
+
+.sensor-card.pm10 .sensor-icon {
+  color: #d35400;
+}
 .sensor-label {
   font-size: 0.875rem;         /* text-sm */
   color: #9ca3af;              /* text-gray-400 */
@@ -260,7 +320,7 @@
 }
 
 .sensor-value {
-  font-size: 1.5rem;           /* text-2xl */
+  font-size: 2rem;           /* text-2xl */
   font-weight: bold;           /* font-bold */
   color: #fff;                 /* text-white */
 }
@@ -277,13 +337,19 @@
       padding: 20px;
       margin-top: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      
     }
     
     .charts-title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #4cc9f0;
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #b3b3b3ff;
+    }
+    .chart-value{
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      color: #ffffffff;
+      font-weight: 550
     }
     
     .charts-grid {
@@ -292,16 +358,44 @@
       gap: 10px;
       
     }
-    
-
-    .chart-container {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-      padding: 10px;
-      height: 250px;
-      max-width:99%
+   @media (min-width: 1024px) {
+      .charts-grid {
+      grid-template-columns: repeat(6, 1fr);      
     }
-    
+   } 
+
+   @media (min-width: 1024px) and (max-width: 1400px) {
+    .charts-grid {
+      grid-template-columns: repeat(3, 1fr);      
+    }
+   }
+       @media (max-width: 1200px) {
+
+      .charts-grid {
+      grid-template-columns: repeat(3, 1fr);      
+    }
+   }
+
+   @media (min-width: 485px) and (max-width: 760px) {
+       .charts-grid {
+      grid-template-columns: repeat(1, 1fr);      
+    }
+      .chart-container {
+        
+         height: 90%;
+      }
+   }
+.chart-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* keeps chart inside */
+}
+
+
     .update-info {
       text-align: center;
       margin-top: 20px;
