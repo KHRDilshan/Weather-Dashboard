@@ -113,6 +113,13 @@ function updateSensorData(temperature, humidity, pressure, altitude, co2, pm25, 
   updateChart(pressureChart, pressure);
   updateChart(pm25Chart, pm25);
   updateChart(pm10Chart, pm10);
+
+      document.getElementById('humidityChartValue').innerHTML = `${humidity}<span class="chart-unit">%</span>`;
+  document.getElementById('temperatureChartValue').innerHTML = `${temperature}<span class="chart-unit">°C</span>`;
+  document.getElementById('co2ChartValue').innerHTML = `${co2}<span class="chart-unit">ppm</span>`;
+  document.getElementById('pressureChartValue').innerHTML = `${pressure}<span class="chart-unit">hPa</span>`;
+  document.getElementById('pm25ChartValue').innerHTML = `${pm25}<span class="chart-unit">µg/m³</span>`;
+  document.getElementById('pm10ChartValue').innerHTML = `${pm10}<span class="chart-unit">µg/m³</span>`;
 }
 
 // Start updating every second
@@ -131,6 +138,7 @@ function updateChart(chart, newValue) {
   chart.data.datasets[0].pointRadius = chart.data.datasets[0].data.map((v,i,arr) => i===arr.length-1 ? 5 : 0);
 
   chart.update('none');
+
 }
 
     
@@ -179,6 +187,21 @@ function updateChart(chart, newValue) {
             console.log({ temperature, humidity, pressure, altitude, co2, pm25, pm10 });
             updateSensorData(temperature, humidity, pressure, altitude, co2, pm25, pm10);
 document.getElementById('location').innerHTML = location;
+    const now = new Date();
+
+const options = {
+  weekday: 'long',   
+  day: '2-digit',    
+  month: 'short',    
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false     
+};
+
+document.getElementById("lastUpdate").innerText = 
+  now.toLocaleDateString('en-US', options).replace(',', '');
+
         });
 }
 

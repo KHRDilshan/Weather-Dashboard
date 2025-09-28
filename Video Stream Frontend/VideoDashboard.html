@@ -9,182 +9,206 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
     <link rel="stylesheet" href="./style.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <section class="home-section">
-
-<div class="sidebar close" id="sidebar">
-  <div class="logo">
-    <h2>ODV-LAB</h2>
-    <i class="bx bx-x closeBtn"></i>
-  </div>
-  <ul class="nav-links">
-    <li class="active" data-page="dashboard">
-      <i class="bx bx-grid-alt"></i>
-      <span class="link-name">Dashboard</span>
-    </li>
-    <li data-page="analyze">
-      <i class="bx bx-file"></i>
-      <span class="link-name">Analyze</span>
-    </li>
-  </ul>
-</div>
-
-
-     
-
-    <header>
-        
-            <nav>
-        <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
+      <div class="sidebar close" id="sidebar">
+        <div class="logo">
+          <h2>ODV-LAB</h2>
+          <i class="bx bx-x closeBtn"></i>
         </div>
-      </nav>
-      <h1 id="location">Loading ....</h1>
-    </header>
-
-<div class="main-body">
-
-     <div class="dashboard">
-      <div class="video-section">
-        <h2 class="video-title">Live Stream</h2>
-        <div class="video-container">
-          <!-- <img src="http://192.168.1.16:9082" alt="ESP32-CAM Stream"> -->
-        </div>
-      </div>
-      
-      <div class="sensors-section">
-<div class="sensor-card humidity">
-  <div class="sensor-header">
-    <div class="sensor-icon">water_drop</div>
-    <div class="sensor-title">Humidity</div>
-  </div>
-  <div class="sensor-value" id="humidityValue">...<span class="sensor-unit">%</span></div>
-</div>
-        
-  <div class="sensor-card temperature">
-  <div class="sensor-header">
-    <div class="sensor-icon">thermostat</div>
-    <div class="sensor-title">Temperature</div>
-  </div>
-  <div class="sensor-value" id="temperatureValue">...<span class="sensor-unit">°C</span></div>
-</div>
-
-<div class="sensor-card pressure">
-  <div class="sensor-header">
-    <div class="sensor-icon">speed</div>
-    <div class="sensor-title">Pressure</div>
-  </div>
-  <div class="sensor-value" id="pressureValue">...<span class="sensor-unit">hPa</span></div>
-</div>
-
-<div class="sensor-card co2">
-  <div class="sensor-header">
-    <div class="sensor-icon">co2</div>
-    <div class="sensor-title">CO₂</div>
-  </div>
-  <div class="sensor-value" id="co2Value">...<span class="sensor-unit">ppm</span></div>
-</div>
-
-
-
-<div class="sensor-card pm25">
-  <div class="sensor-header">
-    <div class="sensor-icon">grain</div>
-    <div class="sensor-title">PM 2.5</div>
-  </div>
-  <div class="sensor-value" id="pm25Value">...<span class="sensor-unit">µg/m³</span></div>
-</div>
-
-<div class="sensor-card pm10">
-  <div class="sensor-header">
-    <div class="sensor-icon">grain</div>
-    <div class="sensor-title">PM 10</div>
-  </div>
-  <div class="sensor-value" id="pm10Value">...<span class="sensor-unit">µg/m³</span></div>
-</div>      
-       
+        <ul class="nav-links">
+          <li class="active" data-page="dashboard">
+            <i class="bx bx-grid-alt"></i>
+            <span class="link-name">Dashboard</span>
+          </li>
+          <li data-page="analyze">
+            <i class="bx bx-file"></i>
+            <span class="link-name">Analyze</span>
+          </li>
+        </ul>
       </div>
 
-    </div>
-    
+      <header>
+        <nav>
+          <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+          </div>
+        </nav>
+        <div class="top-header">
+          <h1 id="location">Loading ....</h1>
+          <div class="last-updated">
+            <span id="lastUpdate">--</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-body">
+        <div class="dashboard">
+          <div class="video-section">
+            <h2 class="video-title">Lovely</h2>
+            <div class="video-container">
+              <!-- <img src="http://192.168.1.16:9082" alt="ESP32-CAM Stream"> -->
+              <img src="./Untitied.jpg" alt="no" />
+            </div>
+          </div>
+
+          <div class="sensors-section">
+            <h2 class="video-title">Stables ODV-LAB</h2>
+            <div></div>
+
+            <div class="sensor-card humidity">
+              <div class="sensor-header">
+                <div class="sensor-icon">water_drop</div>
+                <div class="sensor-title">Humidity</div>
+              </div>
+              <div class="sensor-value" id="humidityValue">
+                ...<span class="sensor-unit">%</span>
+              </div>
+            </div>
+
+            <div class="sensor-card temperature">
+              <div class="sensor-header">
+                <div class="sensor-icon">thermostat</div>
+                <div class="sensor-title">Temperature</div>
+              </div>
+              <div class="sensor-value" id="temperatureValue">
+                ...<span class="sensor-unit">°C</span>
+              </div>
+            </div>
+
+            <div class="sensor-card pressure">
+              <div class="sensor-header">
+                <div class="sensor-icon">speed</div>
+                <div class="sensor-title">Pressure</div>
+              </div>
+              <div class="sensor-value" id="pressureValue">
+                ...<span class="sensor-unit">hPa</span>
+              </div>
+            </div>
+
+            <div class="sensor-card co2">
+              <div class="sensor-header">
+                <div class="sensor-icon">co2</div>
+                <div class="sensor-title">CO₂</div>
+              </div>
+              <div class="sensor-value" id="co2Value">
+                ...<span class="sensor-unit">ppm</span>
+              </div>
+            </div>
+
+            <div class="sensor-card pm25">
+              <div class="sensor-header">
+                <div class="sensor-icon">grain</div>
+                <div class="sensor-title">PM 2.5</div>
+              </div>
+              <div class="sensor-value" id="pm25Value">
+                ...<span class="sensor-unit">µg/m³</span>
+              </div>
+            </div>
+
+            <div class="sensor-card pm10">
+              <div class="sensor-header">
+                <div class="sensor-icon">grain</div>
+                <div class="sensor-title">PM 10</div>
+              </div>
+              <div class="sensor-value" id="pm10Value">
+                ...<span class="sensor-unit">µg/m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="charts-section">
-  <div class="charts-grid">
+          <div class="charts-grid">
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">Humidity</div>
+                <div class="chart-value" id="humidityChartValue">
+                  ...<span class="chart-unit">%</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="humidityChart"></canvas>
+              </div>
+            </div>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">Humidity</div>
-        <div class="chart-value" id="humidityChartValue">...<span class="chart-unit">%</span></div>
-      </div>
-      <div class="chart-body">
-        <canvas id="humidityChart"></canvas>
-      </div>
-    </div>
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">Temperature</div>
+                <div class="chart-value" id="temperatureChartValue">
+                  ...<span class="chart-unit">°C</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="temperatureChart"></canvas>
+              </div>
+            </div>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">Temperature</div>
-        <div class="chart-value" id="temperatureChartValue">...<span class="chart-unit">°C</span></div>
-      </div>
-      <div class="chart-body">
-        <canvas id="temperatureChart"></canvas>
-      </div>
-    </div>
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">Pressure</div>
+                <div class="chart-value" id="pressureChartValue">
+                  ...<span class="chart-unit">hPa</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pressureChart"></canvas>
+              </div>
+            </div>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">Pressure</div>
-        <div class="chart-value" id="pressureChartValue">...<span class="chart-unit">hPa</span></div>
-      </div>
-      <div class="chart-body">
-        <canvas id="pressureChart"></canvas>
-      </div>
-    </div>
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">CO₂</div>
+                <div class="chart-value" id="co2ChartValue">
+                  ...<span class="chart-unit">ppm</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="co2Chart"></canvas>
+              </div>
+            </div>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">CO₂</div>
-        <div class="chart-value" id="co2ChartValue">...<span class="chart-unit">ppm</span></div>
-      </div>
-      <div class="chart-body">
-        <canvas id="co2Chart"></canvas>
-      </div>
-    </div>
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">PM 2.5</div>
+                <div class="chart-value" id="pm25ChartValue">
+                  ...<span class="chart-unit">µg/m³</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pm25Chart"></canvas>
+              </div>
+            </div>
 
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">PM 2.5</div>
-        <div class="chart-value" id="pm25Value">...<span class="chart-unit">µg/m³</span></div>
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="charts-title">PM 10</div>
+                <div class="chart-value" id="pm10ChartValue">
+                  ...<span class="chart-unit">µg/m³</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pm10Chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="chart-body">
-        <canvas id="pm25Chart"></canvas>
-      </div>
-    </div>
-
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="charts-title">PM 10</div>
-        <div class="chart-value" id="pm10Value">...<span class="chart-unit">µg/m³</span></div>
-      </div>
-      <div class="chart-body">
-        <canvas id="pm10Chart"></canvas>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-    
-</div>
     </section>
     <script src="main.js"></script>
-    
   </body>
 </html>

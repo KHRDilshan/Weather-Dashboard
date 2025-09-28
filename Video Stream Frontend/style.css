@@ -121,22 +121,42 @@
 }
 
   header {
-      text-align: center;
+      text-align: left;
           /* background: var(--card-bg);
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
     }
-    
+  .top-header {
+  display: flex;
+  justify-content: space-between; /* pushes left/right */
+  align-items: center;            /* keeps them aligned vertically */
+  padding: 0 20px;                /* optional horizontal padding */
+}
     h1 {
-        margin-top:-40px;
+        margin-top:-20px;
+        margin-bottom:-20px;
          padding:20px;
 
-      font-size: 2.5rem;
-      background: linear-gradient(to right, #4cc9f0, #e94560);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.7rem;
+      color: white;
+
     }
     
+        .last-updated {
+      text-align: center;
+      padding: 15px;
+      background: var(--light);
+      color: #ffffffff;
+      font-size: 1.2rem;
+  
+    }
+
+    #lastUpdate {
+  display: inline-block;        /* makes border wrap text */
+  border-bottom: 4px solid white; /* adjust color & thickness */
+  padding-bottom: 4px;          /* little spacing */
+}
+
 .main-body{
     padding:20px
 }
@@ -162,28 +182,34 @@
     }
     
     .video-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-bottom: 15px;
-      text-align: center;
-      color: #4cc9f0;
+      text-align: left;
+      color: #ffffffff;
     }
     
-    .video-container {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 15px;
-    }
+.video-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+
+  /* Center the video/image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
     
     .video-container img {
-      width: 100%;
+      width: 60%;
       display: block;
       transition: transform 0.3s ease;
+       border-radius: 10px;
+      
     }
     
-    .video-container:hover img {
-      transform: scale(1.02);
-    }
     
     .video-status {
       position: absolute;
