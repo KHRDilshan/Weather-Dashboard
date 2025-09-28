@@ -18,9 +18,9 @@ tabs.forEach(tab => {
 
     const page = tab.getAttribute("data-page");
     if (page === "dashboard") {
-     window.location.href = "index.html";
+     window.location.href = "VideoDashboard.html";
     } else if (page === "analyze") {
-    window.location.href = "Analyze.html";
+    window.location.href = "SensorAnalysis.html";
     }
   });
 });

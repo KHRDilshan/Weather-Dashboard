@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Page - ODV LAB</title>
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+      <link rel="stylesheet" href="./analyzestyle.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+  
+</head>
+<body>
+
+  <section class="home-section">
+
+    <div class="popup-overlay" id="popup-overlay">
+  <div class="popup-content">
+    <h3 class="popup-title" id="popup-title">Alert</h3>
+    <p class="popup-message" id="popup-message">This is a message</p>
+    <button class="popup-button" id="popup-button">OK</button>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-content">
+    <div class="loading-spinner"></div>
+    <div class="loading-message">Loading data...</div>
+  </div>
+</div>
+
+    <div class="sidebar close" id="sidebar">
+  <div class="logo">
+    <h2>ODV-LAB</h2>
+    <i class="bx bx-x closeBtn"></i>
+  </div>
+  <ul class="nav-links">
+    <li  data-page="dashboard">
+      <i class="bx bx-grid-alt"></i>
+      <span class="link-name">Dashboard</span>
+    </li>
+    <li class="active" data-page="analyze">
+      <i class="bx bx-file"></i>
+      <span class="link-name">Analyze</span>
+    </li>
+  </ul>
+</div>
+      <header>
+        <nav>
+          <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+                 <h1 id="location">Loading ....</h1>
+          </div>
+                  <div class="top-header">
+     
+          <div class="last-updated">
+            <span id="lastUpdate">--</span>
+          </div>
+        </div>
+        </nav>
+        <!-- <div class="top-header">
+          <h1 id="location">Loading ....</h1>
+          <div class="last-updated">
+            <span id="lastUpdate">--</span>
+          </div>
+        </div> -->
+      </header>
+
+     <div class="main-body">
+
+          <div class="dashboard">
+      <div class="card">
+        <h3>Select Time Range</h3>
+        <div class="time-inputs">
+
+ <div class="custom-time-picker">
+    <label for="start-time">From</label>
+  <div class="time-selectors compact-time-selectors">
+     <div class="date-input-group compact-date-input">
+  <input type="date" id="start-date" name="start-date" aria-label="Start date">
+</div>
+    <select id="start-hour" name="start-hour" aria-label="Start hour"></select>
+    <span>:</span>
+    <select id="start-minute" name="start-minute" aria-label="Start minute"></select>
+    <span>:</span>
+    <select id="start-second" name="start-second" aria-label="Start second"></select>
+  </div>
+  
+</div>
+<input type="hidden" id="start-time" name="start-time" />
+
+
+<div class="custom-time-picker">
+  <label for="end-time">To</label>
+  <div class="time-selectors compact-time-selectors">
+      <div class="date-input-group compact-date-input">
+    <input type="date" id="end-date" name="end-date" aria-label="End date">
+  </div>
+    <select id="end-hour" name="end-hour" aria-label="End hour"></select>
+    <span>:</span>
+    <select id="end-minute" name="end-minute" aria-label="End minute"></select>
+    <span>:</span>
+    <select id="end-second" name="end-second" aria-label="End second"></select>
+  </div>
+</div>
+<input type="hidden" id="end-time" name="end-time" />
+
+        </div>
+
+<div class="submit-btn-wrapper">
+  <button class="submit-btn" id="submit-btn">Get Data</button>
+</div>
+      </div>
+
+
+
+            <div class="lottie-container" id="loading-animation">
+          <dotlottie-wc
+            src="https://lottie.host/014e40d0-aeba-4241-8f35-1d3b7cd3a6e9/6JfMsDElEc.lottie"
+          
+            speed="1"
+            autoplay
+            loop
+          ></dotlottie-wc>
+        </div>
+
+          </div>
+
+ <div class="charts-section">
+  <h3>Data Visualization</h3>
+          <div class="charts-grid">
+            <div class="chart-container humidity">
+              <div class="chart-header humidity">
+                 <div class="sensor-icon">water_drop</div>
+                <div class="charts-title">Humidity</div>
+                <div class="chart-value" id="humidityChartValue">
+                  ...<span class="chart-unit">%</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="humidityChart"></canvas>
+                  <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+
+            <div class="chart-container temperature">
+              <div class="chart-header temperature">
+                  <div class="sensor-icon">thermostat</div>
+                <div class="charts-title">Temperature</div>
+                <div class="chart-value" id="temperatureChartValue">
+                  ...<span class="chart-unit">°C</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="temperatureChart"></canvas>
+                <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+
+            <div class="chart-container pressure">
+              <div class="chart-header pressure">
+                <div class="sensor-icon">speed</div>
+                <div class="charts-title">Pressure</div>
+                <div class="chart-value" id="pressureChartValue">
+                  ...<span class="chart-unit">hPa</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pressureChart"></canvas>
+                 <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+
+            <div class="chart-container co2">
+              <div class="chart-header co2">
+                 <div class="sensor-icon">co2</div>
+                <div class="charts-title">CO₂</div>
+                <div class="chart-value" id="co2ChartValue">
+                  ...<span class="chart-unit">ppm</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="co2Chart"></canvas>
+                 <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+
+            <div class="chart-container pm25">
+              <div class="chart-header pm25">
+                 <div class="sensor-icon">grain</div>
+                <div class="charts-title">PM 2.5</div>
+                <div class="chart-value" id="pm25ChartValue">
+                  ...<span class="chart-unit">µg/m³</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pm25Chart"></canvas>
+                 <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+
+            <div class="chart-container pm10">
+              <div class="chart-header pm10">
+                 <div class="sensor-icon">grain</div>
+                <div class="charts-title">PM 10</div>
+                <div class="chart-value" id="pm10ChartValue">
+                  ...<span class="chart-unit">µg/m³</span>
+                </div>
+              </div>
+              <div class="chart-body">
+                <canvas id="pm10Chart"></canvas>
+                 <div class="no-data-overlay" id="humidityNoData">No Data</div>
+              </div>
+            </div>
+          </div>
+    </div>
+          
+        </div>
+
+        
+</div>
+
+  </section>
+  <script src = "analyze.js">
+  </script>
+</body>
+</html>

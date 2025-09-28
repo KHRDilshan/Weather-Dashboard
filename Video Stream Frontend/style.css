@@ -137,7 +137,7 @@
         margin-bottom:-20px;
          padding:20px;
 
-      font-size: 1.7rem;
+      font-size: 1rem;
       color: white;
 
     }
@@ -388,12 +388,18 @@
       .charts-grid {
       grid-template-columns: repeat(6, 1fr);      
     }
+     h1{
+          font-size: 1.5rem;
+   }
    } 
 
    @media (min-width: 1024px) and (max-width: 1400px) {
     .charts-grid {
       grid-template-columns: repeat(3, 1fr);      
     }
+   h1{
+          font-size: 1.5rem;
+   }
    }
        @media (max-width: 1200px) {
 
@@ -401,14 +407,27 @@
       grid-template-columns: repeat(3, 1fr);      
     }
    }
-
-   @media (min-width: 485px) and (max-width: 760px) {
+   @media (min-width: 760px) and (max-width: 1024px) {
+      h1{
+        font-size:20px
+      }
+     .last-updated{
+        font-size:1rem
+      }
+   }
+   @media (min-width:300px) and (max-width: 760px) {
        .charts-grid {
       grid-template-columns: repeat(1, 1fr);      
     }
       .chart-container {
         
          height: 90%;
+      }
+      h1{
+        font-size:15px
+      }
+     .last-updated{
+        font-size:12px
       }
    }
 .chart-container {
@@ -420,7 +439,10 @@
   height: 100%;
   overflow: hidden; /* keeps chart inside */
 }
-
+.chart-unit {
+  font-size: 1rem;             /* text-base */
+  font-weight: normal;         /* font-normal */
+}
 
     .update-info {
       text-align: center;

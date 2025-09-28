@@ -27,10 +27,10 @@ db.connect((err) => {
 
 
 // ✅ Endpoint to get all sensor readings by time range (for current date)
-app.get('/sensorReadingsByTime', (req, res) => {
-  console.log("hit for get time slot data")
-  const { startTime, endTime ,  parameter} = req.query;
+app.get('/VideoStreamSensorReadingsByDateTime', (req, res) => {
 
+  const { startTime, endTime } = req.query;
+  console.log("hit for get time slot data", startTime, endTime )
   // Validate required parameters
   if (!startTime || !endTime) {
     return res.status(400).json({ error: 'Both startTime and endTime are required' });
@@ -56,13 +56,12 @@ app.get('/sensorReadingsByTime', (req, res) => {
 
   const sql = `
     SELECT *
-    FROM readings
-    WHERE time BETWEEN ? AND ?
-     AND state = ? 
-    ORDER BY time ASC
+    FROM sensordata
+    WHERE reading_time BETWEEN ? AND ?
+    ORDER BY reading_time ASC
   `;
 
-  db.query(sql, [startDateTime, endDateTime, parameter], (err, results) => {
+  db.query(sql, [startDateTime, endDateTime], (err, results) => {
     if (err) {
       console.error('Database error:', err);
       return res.status(500).json({ error: 'Database error' });
@@ -74,12 +73,14 @@ app.get('/sensorReadingsByTime', (req, res) => {
 
     // Format the response with all sensor data
     const response = results.map(row => ({
-      time: row.time,
-      temperature: row.temperature,
-      localTemperature: row.temperature_locale,
-      pressure: row.pressure,
-      humidity: row.humidity,
-      state: row.state
+      reading_time: row.reading_time,
+      temperature: row.value1,
+      humidity: row.value2,
+      pressure: row.value3,
+      altitude: row.value4,
+      co2: row.value5,
+      pm25: row.value6,
+      pm10: row.value7,
     }));
 
     res.json(response);
@@ -119,13 +120,13 @@ function saveRandomSensorDataToDatabase() {
   const sensorData = generateRandomSensorDataForVideoStream();
 
   // Delete all previous data
-  const deleteSql = `DELETE FROM sensordata`;
+  // const deleteSql = `DELETE FROM sensordata`;
 
-  db.query(deleteSql, (err) => {
-    if (err) {
-      console.error('Error deleting old data:', err);
-      return;
-    }
+  // db.query(deleteSql, (err) => {
+  //   if (err) {
+  //     console.error('Error deleting old data:', err);
+  //     return;
+  //   }
 
     // Now insert the new data
     const insertSql = `
@@ -152,7 +153,7 @@ function saveRandomSensorDataToDatabase() {
 
       // console.log('Random sensor data saved:', sensorData);
     });
-  });
+
 }
 
 // Save new random data every second
